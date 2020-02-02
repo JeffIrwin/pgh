@@ -1,0 +1,16 @@
+[
+	{
+		"folder": "../json/",
+		"branches": ["develop", "master"]
+	},
+	{
+		"folder": "../lodepng/",
+		"branches": ["master"]
+	},
+	{
+		"folder": "../minizip/"
+	},
+	{
+		"folder": "../pugixml/"
+	}
+]
