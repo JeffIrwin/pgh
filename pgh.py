@@ -1,14 +1,15 @@
 
 # TODO:
 #
+#   - take forks.json filename as cmd arg, operate on folders relative to forks.json
 #   - error handling
 #       * at least "fatal: 'upstream' does not appear to be a git repository"
 #       * merge conflict?
-#   - take forks.json filename as cmd arg, operate on folders relative to forks.json
 #   - success/fail count at end of log
 #   - add JSON entry for upstream URL, optionally set upstream first time
-#       * could even clone optionally
-#   - add Windows Task Scheduler item
+#       * could even clone optionally.  save these in a separate all.json file
+#         or find a way to clone all repos in an org.
+#   - Readme
 #
 
 import json
@@ -25,7 +26,8 @@ def sync_branch(branch):
 
 def sync_forks():
 
-    # See:
+    # Get updates from upstream forks and save them to your personal backup
+    # forks.  See:
     #
     #   https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork
     #
@@ -33,7 +35,7 @@ def sync_forks():
     print()
     print(this + "starting")
 
-    default = "master"
+    default_branch = "master"
 
     rfile = "forks.json"
     print(this + "loading JSON file \"" + rfile + "\" ...")
@@ -44,7 +46,8 @@ def sync_forks():
         print(this + "folder = " + repo["folder"])
         os.chdir(repo["folder"])
 
-        # Stash any unsaved changes
+        # Stash any unsaved changes.  It's a bad idea to run this script on
+        # folders that you work out of, but we'll try to save just in case.
         os.system("git stash")
 
         os.system("git fetch upstream")
@@ -53,7 +56,7 @@ def sync_forks():
             for branch in repo["branches"]:
                 sync_branch(branch)
         else:
-            sync_branch(default)
+            sync_branch(default_branch)
 
         # Restore stashed changes to last branch
         os.system("git stash pop")

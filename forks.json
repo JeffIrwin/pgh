@@ -11,6 +11,9 @@
 		"folder": "../minizip/"
 	},
 	{
+		"folder": "../mpir/"
+	},
+	{
 		"folder": "../pugixml/"
 	}
 ]
