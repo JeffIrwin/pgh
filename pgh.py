@@ -1,21 +1,23 @@
 
 # TODO:
 #
-#   - take forks.json filename as cmd arg, operate on folders relative to forks.json
-#   - error handling
+#   - Operate on folders relative to forks.json.
+#   - Error handling
 #       * at least "fatal: 'upstream' does not appear to be a git repository"
 #       * merge conflict?
-#   - success/fail count at end of log
-#   - add JSON entry for upstream URL, optionally set upstream first time
+#   - Success/fail count at end of log
+#   - Add JSON entry for upstream URL, optionally set upstream first time
 #       * 'git remote add upstream https://github.com/ORG/REPO'
 #       * could even clone optionally.  save these in a separate all.json file
 #         or find a way to clone all repos in an org.
 #   - Readme
 #
 
-from datetime import datetime
+import argparse
 import json
 import os
+
+from datetime import datetime
 
 this = "pgh:  "
 
@@ -29,7 +31,7 @@ def sync_branch(branch):
     os.system("git push --all")
     os.system("git checkout -")  # Go back to the last branch
 
-def sync_forks():
+def sync_forks(args):
 
     # Get updates from upstream forks and save them to your personal backup
     # forks.  See:
@@ -43,7 +45,7 @@ def sync_forks():
 
     default_branch = "master"
 
-    rfile = "forks.json"
+    rfile = args.forks
     printf(this + "loading JSON file \"" + rfile + "\" ...")
     repos = json.load(open(rfile, 'r'))
     printf(this + "repos =\n" + json.dumps(repos, indent = 4))
@@ -71,8 +73,15 @@ def sync_forks():
 
     printf(this + "done")
 
+def pgh_parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("forks", type = str,
+            help = "JSON file listing the forked repository folders")
+    return parser.parse_args()
+
 def main():
-    sync_forks()
+    args = pgh_parse_args()
+    sync_forks(args)
 
 main()
 
