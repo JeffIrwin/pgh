@@ -7,18 +7,23 @@
 #       * merge conflict?
 #   - success/fail count at end of log
 #   - add JSON entry for upstream URL, optionally set upstream first time
+#       * 'git remote add upstream https://github.com/ORG/REPO'
 #       * could even clone optionally.  save these in a separate all.json file
 #         or find a way to clone all repos in an org.
 #   - Readme
 #
 
+from datetime import datetime
 import json
 import os
 
 this = "pgh:  "
 
+def printf(string):
+    print(string, flush = True)
+
 def sync_branch(branch):
-    print(this + "branch = " + branch, flush = True)
+    printf(this + "branch = " + branch)
     os.system("git checkout " + branch)
     os.system("git merge upstream/" + branch)
     os.system("git push --all")
@@ -32,18 +37,19 @@ def sync_forks():
     #   https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork
     #
 
-    print()
-    print(this + "starting")
+    printf('')
+    printf(this + "starting")
+    printf(this + datetime.now().isoformat())
 
     default_branch = "master"
 
     rfile = "forks.json"
-    print(this + "loading JSON file \"" + rfile + "\" ...")
+    printf(this + "loading JSON file \"" + rfile + "\" ...")
     repos = json.load(open(rfile, 'r'))
-    print(this + "repos =\n" + json.dumps(repos, indent = 4))
+    printf(this + "repos =\n" + json.dumps(repos, indent = 4))
 
     for repo in repos:
-        print(this + "folder = " + repo["folder"])
+        printf(this + "folder = " + repo["folder"])
         os.chdir(repo["folder"])
 
         # Stash any unsaved changes.  It's a bad idea to run this script on
@@ -61,9 +67,9 @@ def sync_forks():
         # Restore stashed changes to last branch
         os.system("git stash pop")
 
-        print()
+        printf('')
 
-    print(this + "done")
+    printf(this + "done")
 
 def main():
     sync_forks()
