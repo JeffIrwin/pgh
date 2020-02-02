@@ -1,7 +1,6 @@
 
 # TODO:
 #
-#   - Operate on folders relative to forks.json.
 #   - Error handling
 #       * at least "fatal: 'upstream' does not appear to be a git repository"
 #       * merge conflict?
@@ -16,6 +15,7 @@
 import argparse
 import json
 import os
+import pathlib
 
 from datetime import datetime
 
@@ -45,14 +45,16 @@ def sync_forks(args):
 
     default_branch = "master"
 
-    rfile = args.forks
-    printf(this + "loading JSON file \"" + rfile + "\" ...")
-    repos = json.load(open(rfile, 'r'))
+    printf(this + "loading JSON file \"" + args.forks + "\" ...")
+    repos = json.load(open(args.forks, 'r'))
     printf(this + "repos =\n" + json.dumps(repos, indent = 4))
+
+    path = pathlib.Path(args.forks).parent.absolute()
+    printf(this + "path = " + str(path))
 
     for repo in repos:
         printf(this + "folder = " + repo["folder"])
-        os.chdir(repo["folder"])
+        os.chdir(path / repo["folder"])
 
         # Stash any unsaved changes.  It's a bad idea to run this script on
         # folders that you work out of, but we'll try to save just in case.
