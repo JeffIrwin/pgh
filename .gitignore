@@ -1,4 +1,7 @@
 
+# pgh makes updates here to not interfere with repos that you actually work out of
+auto-repos/
+
 # Miscellaneous scratch dir
 scratch/
 

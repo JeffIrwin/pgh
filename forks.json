@@ -1,19 +1,34 @@
 [
 	{
-		"folder": "../json/",
+		"folder": "auto-repos/json-fortran/",
+		"origin": "https://github.com/JeffIrwin/json-fortran",
+		"upstream": "https://github.com/jacobwilliams/json-fortran"
+	},
+	{
+		"folder": "auto-repos/json/",
+		"origin": "https://github.com/JeffIrwin/json",
+		"upstream": "https://github.com/nlohmann/json",
 		"branches": ["develop", "master"]
 	},
 	{
-		"folder": "../lodepng/",
+		"folder": "auto-repos/lodepng/",
+		"origin": "https://github.com/JeffIrwin/lodepng",
+		"upstream": "https://github.com/lvandeve/lodepng",
 		"branches": ["master"]
 	},
 	{
-		"folder": "../minizip/"
+		"folder": "auto-repos/minizip/",
+		"origin": "https://github.com/JeffIrwin/minizip",
+		"upstream": "https://github.com/nmoinvaz/minizip"
 	},
 	{
-		"folder": "../mpir/"
+		"folder": "auto-repos/mpir/",
+		"origin": "https://github.com/JeffIrwin/mpir",
+		"upstream": "https://github.com/wbhart/mpir"
 	},
 	{
-		"folder": "../pugixml/"
+		"folder": "auto-repos/pugixml/",
+		"origin": "https://github.com/JeffIrwin/pugixml",
+		"upstream": "https://github.com/zeux/pugixml"
 	}
 ]
