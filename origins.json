@@ -1,0 +1,20 @@
+[
+	{
+		"folder": "auto-repos/life",
+		"origin": "https://github.com/JeffIrwin/life",
+		"submodules":
+		[
+			"submodules/bat",
+			"submodules/pnmio"
+		]
+	},
+	{
+		"folder": "auto-repos/mandelbrotZoom",
+		"origin": "https://github.com/JeffIrwin/mandelbrotZoom",
+		"submodules":
+		[
+			"submodules/bat",
+			"submodules/pnmio"
+		]
+	}
+]
