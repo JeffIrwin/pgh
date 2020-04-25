@@ -9,6 +9,14 @@
 		]
 	},
 	{
+		"folder": "auto-repos/music-of-the-sars",
+		"origin": "https://github.com/JeffIrwin/music-of-the-sars",
+		"submodules":
+		[
+			"submodules/bat"
+		]
+	},
+	{
 		"folder": "auto-repos/mandelbrotZoom",
 		"origin": "https://github.com/JeffIrwin/mandelbrotZoom",
 		"submodules":

@@ -59,6 +59,8 @@ def sync_forks(args):
     path = pathlib.Path(args.forks).parent.absolute()
     printf(this + "path = " + str(path))
 
+    cwd = os.getcwd()
+
     ntotal = 0
     nfail  = 0
     nsuccess = 0
@@ -102,7 +104,7 @@ def sync_forks(args):
                     upstream = repo["upstream"]
                     printf(this + "adding upstream remote: " + upstream)
                     io = os.system("git remote add upstream " + upstream)
-                    io = os.system("git fetch upstream")
+                    if (io == 0): io = os.system("git fetch upstream")
 
                 else:
                     printf(this + "error: no upstream remote found for \"" + str(path / repo["folder"]) + "\"")
@@ -135,6 +137,9 @@ def sync_forks(args):
     if (nfail != 0):
         printf(this + "failed in folders: " + str(failures))
 
+    # Return to previous directory
+    os.chdir(cwd)
+
     return nfail
 
 def pull_submodules(args):
@@ -154,6 +159,8 @@ def pull_submodules(args):
 
     path = pathlib.Path(args.submodules).parent.absolute()
     printf(this + "path = " + str(path))
+
+    cwd = os.getcwd()
 
     ntotal = 0
     nfail  = 0
@@ -190,38 +197,36 @@ def pull_submodules(args):
             stashing = True
             io = os.system("git stash")
 
-        if (io == 0):
-            io = os.system("git fetch origin")
+        if (io == 0): io = os.system("git fetch origin")
 
         if (io == 0):
-            #if "branches" in repo:
-            #    for branch in repo["branches"]:
-            #        # TODO
-            #else:
-                io = sync_branch(default_branch, "origin")
+            io = sync_branch(default_branch, "origin")
 
-                # TODO:  handle key error if "submodules" doesn't exist
-                for module in repo["submodules"]:
-                    printf(this + "submodule = " + module)
+            # TODO:  handle key error if "submodules" doesn't exist
+            for module in repo["submodules"]:
+                printf(this + "submodule = " + module)
 
-                    # TODO:  catch io errors
+                # TODO:  catch io errors
 
-                    # Pull latest master branch of submodule.  TODO:  branch options?
-                    os.chdir(path / repo["folder"] / module)
-                    io = os.system("git pull origin master")
+                # Pull latest master branch of submodule.  TODO:  branch options?
+                os.chdir(path / repo["folder"] / module)
+                io = os.system("git pull origin master")
 
+                if (io == 0):
                     # Commit submodule update to parent
                     os.chdir(path / repo["folder"])
-                    io = os.system("git commit -am \"" + this + "automatic update of " + module + "\"")
 
-                # Multiple commits, one push, just to take it easy on the CI/CD
-                # system.  Pushing each commit would test them individually,
-                # which may be preferable to see more incremental test results
-                io = os.system("git push")
+                    # Don't check io, "nothing to commit" isn't considered a problem.
+                    os.system("git commit -am \"" + this + "automatic update of " + module + "\"")
 
-                ntotal += 1
-                if (io == 0):
-                    nsuccess += 1
+            # Multiple commits, one push, just to take it easy on the CI/CD
+            # system.  Pushing each commit would test them individually,
+            # which may be preferable to see more incremental test results
+            if (io == 0): io = os.system("git push")
+
+            ntotal += 1
+            if (io == 0):
+                nsuccess += 1
 
         if (io != 0):
             nfail += 1
@@ -236,6 +241,9 @@ def pull_submodules(args):
 
     if (nfail != 0):
         printf(this + "failed in folders: " + str(failures))
+
+    # Return to previous directory
+    os.chdir(cwd)
 
     return nfail
 
@@ -254,7 +262,6 @@ def pgh_parse_args():
         parser.print_help()
 
     return args
-
 
 def main():
     args = pgh_parse_args()

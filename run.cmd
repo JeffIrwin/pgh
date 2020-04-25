@@ -1,3 +1,3 @@
 
-python .\pgh.py .\forks.json >> .\scratch\sync_forks.log 2>&1
+python .\pgh.py -f .\forks.json -s .\origins.json >> .\scratch\pgh.log 2>&1
 
