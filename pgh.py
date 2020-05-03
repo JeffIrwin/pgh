@@ -214,8 +214,10 @@ def pull_submodules(args):
                     # Commit submodule update to parent
                     os.chdir(path / repo["folder"])
 
+                    os.system("git add " + str(path / repo["folder"] / module))
+
                     # Don't check io, "nothing to commit" isn't considered a problem.
-                    os.system("git commit -am \"" + this + "automatic update of " + module + "\"")
+                    os.system("git commit -m \"" + this + "automatic update of " + module + "\"")
 
             # Multiple commits, one push, just to take it easy on the CI/CD
             # system.  Pushing each commit would test them individually,
