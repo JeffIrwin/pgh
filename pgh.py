@@ -206,8 +206,6 @@ def pull_submodules(args):
             for module in repo["submodules"]:
                 printf(this + "submodule = " + module)
 
-                # TODO:  catch io errors
-
                 # Pull latest master branch of submodule.  TODO:  branch options?
                 os.chdir(path / repo["folder"] / module)
                 io = os.system("git pull origin master")
