@@ -1,10 +1,19 @@
 [
 	{
+		"folder": "auto-repos/colormapper",
+		"origin": "https://github.com/JeffIrwin/colormapper",
+		"submodules":
+		[
+			"submodules/colormaps"
+		]
+	},
+	{
 		"folder": "auto-repos/life",
 		"origin": "https://github.com/JeffIrwin/life",
 		"submodules":
 		[
 			"submodules/bat",
+			"submodules/colormapper",
 			"submodules/pnmio"
 		]
 	},
@@ -22,7 +31,8 @@
 		"origin": "https://github.com/JeffIrwin/maph",
 		"submodules":
 		[
-			"submodules/bat"
+			"submodules/bat",
+			"submodules/colormapper"
 		]
 	},
 	{

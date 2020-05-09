@@ -27,9 +27,11 @@ def sync_branch(branch, remote):
     printf(this + "branch = " + branch)
     io = os.system("git checkout " + branch)
     #printf("io 1 = " + str(io))
+    if (io == 0): io = os.system("git pull origin " + branch)
+    #printf("io 1a= " + str(io))
     if (io == 0): io = os.system("git merge " + remote + "/" + branch)
     #printf("io 2 = " + str(io))
-    if (io == 0): io = os.system("git push --all")
+    if (io == 0): io = os.system("git push origin " + branch)
     #printf("io 3 = " + str(io))
     if (io == 0): io = os.system("git checkout -")  # Go back to the last branch
     #printf("io 4 = " + str(io))
