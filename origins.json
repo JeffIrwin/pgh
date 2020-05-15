@@ -4,6 +4,7 @@
 		"origin": "https://github.com/JeffIrwin/colormapper",
 		"submodules":
 		[
+			"submodules/bat",
 			"submodules/colormaps"
 		]
 	},

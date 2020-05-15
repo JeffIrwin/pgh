@@ -31,6 +31,8 @@ def sync_branch(branch, remote):
     #printf("io 1a= " + str(io))
     if (io == 0): io = os.system("git merge " + remote + "/" + branch)
     #printf("io 2 = " + str(io))
+    if (io == 0): io = os.system("git submodule update --init --recursive")
+    #printf("io 2a = " + str(io))
     if (io == 0): io = os.system("git push origin " + branch)
     #printf("io 3 = " + str(io))
     if (io == 0): io = os.system("git checkout -")  # Go back to the last branch
