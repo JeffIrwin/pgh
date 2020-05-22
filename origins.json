@@ -9,6 +9,14 @@
 		]
 	},
 	{
+		"folder": "auto-repos/fortfuck",
+		"origin": "https://github.com/JeffIrwin/fortfuck",
+		"submodules":
+		[
+			"submodules/bat"
+		]
+	},
+	{
 		"folder": "auto-repos/life",
 		"origin": "https://github.com/JeffIrwin/life",
 		"submodules":
@@ -39,6 +47,14 @@
 	{
 		"folder": "auto-repos/music-of-the-sars",
 		"origin": "https://github.com/JeffIrwin/music-of-the-sars",
+		"submodules":
+		[
+			"submodules/bat"
+		]
+	},
+	{
+		"folder": "auto-repos/pnmio",
+		"origin": "https://github.com/JeffIrwin/pnmio",
 		"submodules":
 		[
 			"submodules/bat"
