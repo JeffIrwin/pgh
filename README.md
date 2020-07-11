@@ -16,7 +16,7 @@ Let's say that you've forked the JSON class from nlohmann.  Perhaps you're makin
 
 Now you want to keep your fork up to date with nlohmann's original fork.  Maybe you log on to github dot com every few days and make a pull request from nlohmann's fork to your fork.  But after a while you start to forget.
 
-With `pgh`, you can automate updating your fork from its upstream fork.  Simply define the relation in a JSON file `forks.json`, along with some other repos like `pugixml`:
+With `pgh`, you can automate updating your fork from its upstream fork.  Simply define the relation of your `json` fork to nlohmann's upstream in a JSON file `forks.json`, along with some other repos like `pugixml`:
 
     [
         {
