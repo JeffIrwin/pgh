@@ -14,7 +14,7 @@ Python git helper, for common tasks that can be automated
 ### Keeping forks up to date
 Let's say that you've forked the [JSON class from nlohmann](https://github.com/nlohmann/json).  Perhaps you're making your own contributions to the project, or you want to reduce dependencies on external forks, or you just have a personal vendeta against nlohmann himself.  Look, your multigenerational feud with the Lohmann family is really none of my business.
 
-But now you want to keep your fork up to date with nlohmann's original fork.  Maybe you log on to github dot com every few days and make a pull request from nlohmann's fork to your fork.  Unfortunately after a while you start to forget.
+But now you want to keep your fork up to date with nlohmann's original fork.  Despite the bitterness in your heart, you have to admit he's coming out with some great new features and he's absolutely crushing those bugs.  Maybe you log on to github dot com every few days and make a pull request from nlohmann's fork to your fork.  Unfortunately after a while you start to forget.
 
 With `pgh`, you can automate updating your fork from its upstream fork.  Simply define the relation of your `json` fork to nlohmann's upstream in a JSON file `forks.json`, along with some other repos like `pugixml`:
 
