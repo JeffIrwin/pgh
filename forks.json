@@ -1,5 +1,10 @@
 [
 	{
+		"folder": "auto-repos/fire-hpp/",
+		"origin": "https://github.com/JeffIrwin/fire-hpp",
+		"upstream": "https://github.com/kongaskristjan/fire-hpp"
+	},
+	{
 		"folder": "auto-repos/json-fortran/",
 		"origin": "https://github.com/JeffIrwin/json-fortran",
 		"upstream": "https://github.com/jacobwilliams/json-fortran"
