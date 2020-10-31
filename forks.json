@@ -1,5 +1,10 @@
 [
 	{
+		"folder": "auto-repos/cryptopp/",
+		"origin": "https://github.com/JeffIrwin/cryptopp",
+		"upstream": "https://github.com/weidai11/cryptopp"
+	},
+	{
 		"folder": "auto-repos/fire-hpp/",
 		"origin": "https://github.com/JeffIrwin/fire-hpp",
 		"upstream": "https://github.com/kongaskristjan/fire-hpp"
