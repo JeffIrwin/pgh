@@ -59,5 +59,13 @@
 		[
 			"submodules/bat"
 		]
+	},
+	{
+		"folder": "auto-repos/rubik",
+		"origin": "https://github.com/JeffIrwin/rubik",
+		"submodules":
+		[
+			"submodules/bat"
+		]
 	}
 ]
