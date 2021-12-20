@@ -63,6 +63,7 @@
 	{
 		"folder": "auto-repos/rubik",
 		"origin": "https://github.com/JeffIrwin/rubik",
+		"branch": "main",
 		"submodules":
 		[
 			"submodules/bat"

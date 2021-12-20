@@ -204,13 +204,19 @@ def pull_submodules(args):
         if (io == 0): io = os.system("git fetch origin")
 
         if (io == 0):
-            io = sync_branch(default_branch, "origin")
+
+            branch = default_branch
+            if "branch" in repo:
+                branch = repo["branch"]
+
+            io = sync_branch(branch, "origin")
 
             # TODO:  handle key error if "submodules" doesn't exist
             for module in repo["submodules"]:
                 printf(this + "submodule = " + module)
 
-                # Pull latest master branch of submodule.  TODO:  branch options?
+                # Pull latest "master" (or non-default) branch of submodule.
+                # TODO:  multiple branch options?
                 os.chdir(path / repo["folder"] / module)
                 io = os.system("git pull origin master")
 
