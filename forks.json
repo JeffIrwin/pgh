@@ -1,5 +1,11 @@
 [
 	{
+		"folder": "auto-repos/GpxTrackPoster/",
+		"origin": "https://github.com/JeffIrwin/GpxTrackPoster",
+		"upstream": "https://github.com/flopp/GpxTrackPoster",
+		"branches": ["main"]
+	},
+	{
 		"folder": "auto-repos/cryptopp/",
 		"origin": "https://github.com/JeffIrwin/cryptopp",
 		"upstream": "https://github.com/weidai11/cryptopp"
