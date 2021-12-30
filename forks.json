@@ -10,6 +10,12 @@
 		"upstream": "https://github.com/kongaskristjan/fire-hpp"
 	},
 	{
+		"folder": "auto-repos/github-pages-deploy-action/",
+		"origin": "https://github.com/JeffIrwin/github-pages-deploy-action",
+		"upstream": "https://github.com/JamesIves/github-pages-deploy-action",
+		"branches": ["dev", "main"]
+	},
+	{
 		"folder": "auto-repos/GpxTrackPoster/",
 		"origin": "https://github.com/JeffIrwin/GpxTrackPoster",
 		"upstream": "https://github.com/flopp/GpxTrackPoster",
